@@ -1,0 +1,1189 @@
+/* ============================================================================
+   MenuPlus — Universal Apple iOS Liquid Glass Design System
+   نظام زجاجي سائل متناظر ومتناسق بالانحناءات (عدا المنيوات للزبائن).
+   ============================================================================ */
+
+/* --------------------------------------------------------------------------
+   0. Transparent Shells + Unified Luminous Mesh & Crisp Grid Backdrop
+   -------------------------------------------------------------------------- */
+html[data-theme] .shell,
+.shell,
+.home-root,
+.home-root.theme-light,
+.home-root.theme-dark,
+.home-root[data-home-theme="light"],
+.home-root[data-home-theme="dark"],
+.mp-auth-page,
+.mp-onboard-shell {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+html[data-theme] .shell::before,
+html[data-theme] .home-root::before,
+.shell::before,
+.home-root::before,
+.mp-auth-page::before,
+.mp-onboard-shell::before {
+  content: "";
+  position: fixed !important;
+  inset: 0 !important;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Unified Light Grid + Luminous Ambient Mesh (Dashboards, Home, Auth, Onboard) */
+html[data-theme="light"]:not([data-shell-backdrop="liquid-image"]) .shell::before,
+.home-root.theme-light::before,
+.home-root[data-home-theme="light"]::before,
+.mp-auth-page.theme-light::before,
+.mp-onboard-shell.theme-light::before {
+  background-color: #f3faf7;
+  background-image:
+    linear-gradient(to right, var(--mp-grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--mp-grid-line) 1px, transparent 1px),
+    radial-gradient(ellipse 68% 48% at 12% 8%, rgba(16, 185, 129, 0.22) 0%, rgba(15, 118, 110, 0.06) 52%, transparent 78%),
+    radial-gradient(ellipse 62% 45% at 88% 18%, rgba(14, 165, 233, 0.17) 0%, rgba(56, 189, 248, 0.04) 55%, transparent 80%),
+    radial-gradient(ellipse 75% 50% at 52% 92%, rgba(52, 211, 153, 0.16) 0%, transparent 72%),
+    linear-gradient(180deg, #f6fcfa 0%, #edf6f3 58%, #f4faf8 100%) !important;
+  background-size:
+    var(--mp-grid-size, 32px) var(--mp-grid-size, 32px),
+    var(--mp-grid-size, 32px) var(--mp-grid-size, 32px),
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    100% 100% !important;
+  background-repeat: repeat, repeat, no-repeat, no-repeat, no-repeat, no-repeat !important;
+}
+
+/* Unified Dark Grid + Deep Teal Ambient Mesh (Exact Match to Reference Backdrop) */
+html[data-theme="dark"]:not([data-shell-backdrop="liquid-image"]) .shell::before,
+.home-root.theme-dark::before,
+.home-root[data-home-theme="dark"]::before,
+.mp-auth-page.theme-dark::before,
+.mp-onboard-shell.theme-dark::before {
+  background-color: #0b1216;
+  background-image:
+    linear-gradient(to right, var(--mp-grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--mp-grid-line) 1px, transparent 1px),
+    radial-gradient(ellipse 68% 48% at 14% 8%, rgba(16, 185, 129, 0.19) 0%, rgba(15, 118, 110, 0.07) 52%, transparent 78%),
+    radial-gradient(ellipse 62% 45% at 88% 18%, rgba(20, 184, 166, 0.14) 0%, rgba(56, 189, 248, 0.04) 54%, transparent 80%),
+    radial-gradient(ellipse 75% 50% at 50% 94%, rgba(15, 118, 110, 0.15) 0%, transparent 72%),
+    linear-gradient(180deg, #0b1216 0%, #0f191e 58%, #0a1014 100%) !important;
+  background-size:
+    var(--mp-grid-size, 32px) var(--mp-grid-size, 32px),
+    var(--mp-grid-size, 32px) var(--mp-grid-size, 32px),
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    100% 100% !important;
+  background-repeat: repeat, repeat, no-repeat, no-repeat, no-repeat, no-repeat !important;
+}
+
+html[data-theme="light"][data-shell-backdrop="liquid-image"] .shell::before {
+  background-image:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.38) 0%, rgba(248, 250, 252, 0.32) 100%),
+    url("/assets/aistudio/125b2ca9092c1fc178c556138a837115_7e71c0d4.jpg") !important;
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+}
+
+html[data-theme="dark"][data-shell-backdrop="liquid-image"] .shell::before {
+  background-image:
+    linear-gradient(180deg, rgba(10, 14, 22, 0.44) 0%, rgba(10, 14, 22, 0.52) 100%),
+    url("/assets/aistudio/125b2ca9092c1fc178c556138a837115_7e71c0d4.jpg") !important;
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+}
+
+/* --------------------------------------------------------------------------
+   1. Universal Blurry Liquid Glass Panels, Cards, Nested Blocks & Tables
+   -------------------------------------------------------------------------- */
+html[data-theme] .shell .card,
+.shell .card,
+.shell .kp,
+.shell .mp-item-card,
+.shell .mp-set-card,
+.shell .mp-set2-panel,
+.shell .mp-set2-hero:not(.is-paused),
+.shell .mp-set2-zone-card,
+.shell .mp-set2-day-row,
+.shell .mp-set2-hours-quick,
+.shell .mp-set2-time-box,
+.shell .mp-set2-subzone-list,
+.shell .mp-set2-slug-box,
+.shell .mp-set2-zones-empty,
+.shell .mp-home-shortcut-card:not(.is-active-warn),
+.shell .mp-home-tips-box,
+.shell .mp-stats-filter-card,
+.shell .mp-stats-hero-card,
+.shell .mp-stats-kpi-tile,
+.shell .mp-stats-panel,
+.shell .mp-stats-focus-box,
+.shell .mp-addon-square-card:not(.is-enabled),
+.shell .mp-addon-preview-card,
+.shell .mp-order-row,
+.shell .mp-order-modal-section,
+.shell .mp-order-info-item,
+.shell .mp-od-block,
+.shell .mp-od-item-row,
+.shell .mp-od-totals,
+.shell .mp-pwa-banner,
+.shell .mp-compass-search-bar,
+.shell .mp-items-cats-bar,
+.shell .mp-tab-order-tile:not(.is-dragging),
+.shell .mp-appearance-layout-card:not(.selected),
+.shell .mp-appearance-theme-card:not(.selected),
+.shell .mp-appearance-shape-card:not(.selected),
+.shell .mp-estore-appearance-card,
+.shell .mp-estore-preview-frame,
+.shell .mp-estore-quick-btn,
+.shell .mp-sb-store-card,
+.shell .mp-sb-branch-card,
+html[data-theme] .shell .mp-admin-settings-sections .mp-framed-box,
+html[data-theme] .shell .mp-admin-settings-sections .mp-compact-payment-box,
+html[data-theme] .shell .mp-admin-settings-sections .mp-tabs-col-box,
+.shell .mp-tg-health-grid,
+.shell .mp-he-stage,
+.shell .mp-he-list,
+.shell .mp-he-switch-row:not(.is-featured),
+.shell .mp-pf-list,
+.shell .mp-pf-row:not(.is-dragging),
+.shell .mp-acc-kpi-card,
+.shell .mp-acc-toolbar,
+.shell .mp-acc-table-card,
+.shell .mp-acc-mobile-card,
+.shell .mp-acc-mobile-status,
+html[data-theme] .home-root .card,
+.home-root .card,
+.home-root .feature-compact-card,
+.home-root .mp-faq-card,
+.home-root .mp-pricing-price-box,
+.home-root .mp-explore-list,
+.home-root .mp-explore-phone-btn,
+html[data-theme] .home-root .mp-auth-glass-card,
+.home-root .mp-auth-glass-card,
+.mp-unified-card,
+.home-root .mp-pricing-card-anim:not(.is-featured),
+.mp-onboard-step-card,
+.mp-onboard-upload-card {
+  position: relative;
+  background: var(--mp-glass-bg) !important;
+  backdrop-filter: var(--mp-glass-blur) !important;
+  -webkit-backdrop-filter: var(--mp-glass-blur) !important;
+  border: 1px solid var(--mp-glass-border) !important;
+  box-shadow: var(--mp-glass-shadow) !important;
+  color: var(--ink);
+  transition:
+    background 0.24s ease,
+    box-shadow 0.24s ease,
+    border-color 0.22s ease,
+    transform 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Frosted Inner Sub-Containers (Concentric Inside 22–28px Cards) */
+.shell .mp-set2-zone-card,
+.shell .mp-set2-day-row,
+.shell .mp-set2-hours-quick,
+.shell .mp-set2-time-box,
+.shell .mp-set2-subzone-list,
+.shell .mp-set2-slug-box,
+.shell .mp-set2-zones-empty,
+.shell .mp-stats-focus-box,
+.shell .mp-he-list,
+.shell .mp-pf-list,
+.shell .mp-he-switch-row:not(.is-featured),
+.shell .mp-tg-health-grid,
+.shell .mp-od-totals,
+.shell .mp-acc-mobile-status,
+.shell .mp-sb-store-card,
+.shell .mp-sb-branch-card,
+.home-root .mp-pricing-price-box,
+.mp-onboard-upload-card,
+.mp-danger-head,
+.mp-confirm-check {
+  border-radius: var(--mp-radius-subcard) !important;
+}
+
+/* Concentric Outer Panel & Card Curvatures */
+.shell .mp-set2-panel,
+.shell .mp-stats-panel,
+.shell .mp-stats-filter-card,
+.shell .mp-stats-hero-card,
+.shell .mp-set2-hero,
+.shell .mp-home-tips-box,
+.shell .mp-he-stage,
+.shell .mp-acc-table-card,
+.shell .mp-admin-settings-sections .mp-framed-box,
+.home-root .mp-auth-glass-card,
+.home-root .mp-explore-list,
+.mp-unified-card {
+  border-radius: var(--mp-radius-panel) !important;
+}
+
+.shell .card,
+.shell .kp,
+.shell .mp-item-card,
+.shell .mp-set-card,
+.shell .mp-stats-kpi-tile,
+.shell .mp-order-row,
+.shell .mp-home-shortcut-card,
+.shell .mp-addon-square-card,
+.shell .mp-addon-preview-card,
+.shell .mp-tab-order-tile,
+.shell .mp-appearance-layout-card,
+.shell .mp-appearance-theme-card,
+.shell .mp-appearance-shape-card,
+.shell .mp-estore-appearance-card,
+.shell .mp-estore-preview-frame,
+.shell .mp-acc-kpi-card,
+.shell .mp-acc-toolbar,
+.shell .mp-acc-mobile-card,
+.shell .mp-pwa-banner,
+.home-root .card,
+.home-root .feature-compact-card,
+.home-root .mp-faq-card,
+.home-root .mp-pricing-card-anim,
+.mp-onboard-step-card {
+  border-radius: var(--mp-radius-card) !important;
+}
+
+.shell .mp-item-card {
+  padding: 13px 16px;
+}
+
+/* Explore Showcase Phone Frame Concentric Alignment */
+.home-root .mp-explore-list {
+  overflow: hidden;
+  padding: 6px;
+  gap: 4px;
+  border-top: 0 !important;
+}
+
+.home-root .mp-explore-list-item {
+  border-radius: 20px !important;
+  border-bottom: 0 !important;
+  padding: 13px 16px !important;
+}
+
+.home-root .mp-explore-list-item.is-active {
+  background: var(--mp-glass-control-hover) !important;
+  box-shadow: var(--mp-glass-control-shadow) !important;
+}
+
+.home-root .mp-explore-phone-btn {
+  border-radius: 30px !important;
+  padding: 6px !important;
+}
+
+.home-root .mp-explore-crop {
+  border-radius: 24px !important;
+}
+
+/* Integrated Aurora Header inside Unified Onboard Card */
+.mp-unified-card .aurora-progress-shell.is-integrated {
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--brand) 12%, transparent) 0%,
+    var(--mp-glass-bg) 52%,
+    color-mix(in srgb, #6366f1 10%, transparent) 100%
+  ) !important;
+  backdrop-filter: var(--mp-glass-blur) !important;
+  -webkit-backdrop-filter: var(--mp-glass-blur) !important;
+  border-bottom: 1px solid var(--mp-glass-divider) !important;
+}
+
+/* Footer Frosted Glass */
+.home-root .ft2 {
+  background: var(--mp-glass-bg) !important;
+  backdrop-filter: var(--mp-glass-blur) !important;
+  -webkit-backdrop-filter: var(--mp-glass-blur) !important;
+  border-top: 1px solid var(--mp-glass-border) !important;
+}
+
+/* Preserve brand border highlight when dragging item/category rows */
+.shell .mp-item-card[style*="var(--brand)"] {
+  border: 1.5px solid var(--brand) !important;
+  box-shadow:
+    inset 0 1.5px 6px rgba(255, 255, 255, 0.22),
+    0 18px 42px color-mix(in srgb, var(--brand) 28%, rgba(0, 0, 0, 0.35)) !important;
+}
+
+/* Frosted table header strips inside all admin & dashboard tables */
+html[data-theme] .shell .card.tw table thead th,
+html[data-theme] .shell .mp-acc-table thead th,
+.shell .mp-acc-table thead th,
+.shell .card.tw table thead th {
+  background: var(--mp-glass-control) !important;
+  backdrop-filter: var(--mp-glass-control-blur) !important;
+  -webkit-backdrop-filter: var(--mp-glass-control-blur) !important;
+  border-bottom: 1px solid var(--mp-glass-divider) !important;
+}
+
+/* Directional 1px Curved Glass Specular Edge Ring Across ALL Viewports */
+.ajax-box::before,
+.mp-od-sheet::before,
+.mp-select-modal-box::before,
+.mp-status-picker-card::before,
+.mp-act-modal-box::before,
+.mp-addon-modal-card::before,
+.mp-glass-modal::before,
+.profile-popover::before,
+html[data-theme] .shell .app-topbar::before,
+.home-root .nav::before,
+.shell .card::before,
+.shell .kp::before,
+.shell .mp-item-card:not([style*="var(--brand)"])::before,
+.shell .mp-set-card::before,
+.shell .mp-set2-panel::before,
+.shell .mp-set2-hero:not(.is-paused)::before,
+.shell .mp-set2-tabs-bar::before,
+.shell .mp-home-shortcut-card:not(.is-active-warn)::before,
+.shell .mp-home-tips-box::before,
+.shell .mp-stats-filter-card::before,
+.shell .mp-stats-hero-card::before,
+.shell .mp-stats-kpi-tile::before,
+.shell .mp-stats-panel::before,
+.shell .mp-stats-seg-track::before,
+.shell .mp-stats-mini-tabs::before,
+.shell .mp-addon-square-card:not(.is-enabled)::before,
+.shell .mp-orders-tabs::before,
+.shell .mp-appearance-mode-tabs::before,
+.shell .mp-order-row::before,
+.shell .mp-pwa-banner::before,
+.shell .mp-compass-search-bar::before,
+.shell .mp-tab-order-tile:not(.is-dragging)::before,
+.shell .mp-appearance-layout-card:not(.selected)::before,
+.shell .mp-appearance-theme-card:not(.selected)::before,
+.shell .mp-appearance-shape-card:not(.selected)::before,
+.shell .mp-admin-settings-sections .mp-framed-box::before,
+.shell .mp-he-stage::before,
+.shell .mp-he-tabs::before,
+.shell .mp-he-plan-tabs::before,
+.shell .mp-pf-list::before,
+.shell .mp-acc-kpi-card::before,
+.shell .mp-acc-toolbar::before,
+.shell .mp-acc-table-card::before,
+.shell .mp-acc-mobile-card::before,
+.shell .mp-theme-icon-switch::before,
+.shell .mp-set2-seg-2::before,
+.home-root .card::before,
+.home-root .feature-compact-card::before,
+.home-root .mp-faq-card::before,
+.home-root .mp-auth-glass-card::before,
+.home-root .mp-explore-list::before,
+.home-root .mp-explore-phone-btn::before,
+.home-root .mp-pricing-billing-track::before,
+.mp-unified-card::before,
+.mp-onboard-step-card::before,
+.home-root .mp-pricing-card-anim:not(.is-featured)::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: inherit;
+  background: var(--mp-glass-rim);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.shell .mp-item-card:hover,
+.shell .mp-order-row:hover,
+.shell .mp-home-shortcut-card:not(.is-active-warn):hover,
+.shell .mp-addon-square-card:not(.is-enabled):hover,
+.shell .kp:hover,
+.shell .mp-acc-kpi-card:hover,
+.home-root .feature-compact-card:hover,
+.home-root .mp-faq-card:hover {
+  background: var(--mp-glass-bg-hover) !important;
+  box-shadow: var(--mp-glass-shadow-hover) !important;
+  transform: translateY(-1px);
+}
+
+.shell .mp-home-shortcut-card:active,
+.shell .mp-addon-square-card:active,
+.shell .btn:active,
+.shell .mp-item-icon-btn:active,
+.shell .mp-order-icon-btn:active,
+.shell .mp-dash-topbar-btn:active {
+  transform: scale(0.975);
+}
+
+.shell .mp-item-card,
+.shell .mp-order-row,
+.shell .mp-set2-panel,
+.shell .mp-stats-panel,
+.shell .mp-home-shortcut-card,
+.shell .mp-addon-square-card,
+.shell .mp-he-stage,
+.shell .mp-acc-mobile-card {
+  contain: layout style;
+}
+
+/* Selected / Highlighted Tinted Liquid Glass Surfaces */
+.shell .mp-addon-square-card.is-enabled,
+.shell .mp-appearance-layout-card.selected,
+.shell .mp-appearance-theme-card.selected,
+.shell .mp-appearance-shape-card.selected,
+.shell .mp-he-switch-row.is-featured,
+.shell .mp-set2-channel-card.is-selected,
+.shell .mp-set2-type-card.is-selected,
+.mp-act-preset-btn.is-active,
+.home-root .mp-faq-card.is-open,
+.mp-onboard-step-card.is-selected {
+  position: relative;
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--brand) 20%, transparent) 0%, color-mix(in srgb, var(--brand) 7%, transparent) 100%) !important;
+  backdrop-filter: var(--mp-glass-blur) !important;
+  -webkit-backdrop-filter: var(--mp-glass-blur) !important;
+  border: 1px solid color-mix(in srgb, var(--brand) 58%, rgba(255, 255, 255, 0.34)) !important;
+  box-shadow:
+    inset 0 1.5px 6px rgba(255, 255, 255, 0.28),
+    inset 0 -3px 8px rgba(0, 0, 0, 0.16),
+    0 12px 28px color-mix(in srgb, var(--brand) 20%, transparent) !important;
+}
+
+.shell .mp-framed-box {
+  border-bottom-color: var(--mp-glass-divider) !important;
+}
+
+.shell .mp-he-row-item,
+.shell .mp-pf-row,
+.shell .mp-set2-row,
+.shell .mp-stats-channel-row,
+.shell .mp-stats-item-row,
+.shell .mp-od-item-row,
+.shell .mp-acc-table tbody td {
+  border-color: var(--mp-glass-divider) !important;
+}
+
+/* --------------------------------------------------------------------------
+   2. Capsule-in-Capsule Rails, Segmented Bars, Volumetric Gel Pills & Inputs
+   -------------------------------------------------------------------------- */
+
+/* Outer Frosted Capsule Rails (Matches Reference Outer Capsule & 5px Gutter) */
+.shell .mp-stats-seg-track,
+.shell .mp-stats-mini-tabs,
+.shell .mp-seg-group,
+.shell .mp-theme-icon-switch,
+.shell .mp-set2-seg-2,
+.shell .mp-orders-tabs,
+.shell .mp-appearance-mode-tabs,
+.shell .mp-he-tabs,
+.shell .mp-he-plan-tabs,
+.home-root .mp-pricing-billing-track {
+  position: relative;
+  padding: 5px !important;
+  border-radius: var(--mp-radius-pill) !important;
+  background: var(--mp-glass-rail-bg) !important;
+  backdrop-filter: var(--mp-glass-control-blur) !important;
+  -webkit-backdrop-filter: var(--mp-glass-control-blur) !important;
+  border: 1px solid var(--mp-glass-border) !important;
+  box-shadow: var(--mp-glass-control-shadow) !important;
+}
+
+/* Multi-Row Wrapping Tab Bars: Responsive Capsule -> Concentric 24px Tray */
+.shell .mp-set2-tabs-bar {
+  position: relative;
+  padding: 6px !important;
+  border-radius: var(--mp-radius-pill) !important;
+  background: var(--mp-glass-rail-bg) !important;
+  backdrop-filter: var(--mp-glass-control-blur) !important;
+  -webkit-backdrop-filter: var(--mp-glass-control-blur) !important;
+  border: 1px solid var(--mp-glass-border) !important;
+  box-shadow: var(--mp-glass-control-shadow) !important;
+}
+
+@media (max-width: 760px) {
+  .shell .mp-set2-tabs-bar {
+    border-radius: 24px !important;
+  }
+}
+
+.shell .mp-items-cats-bar {
+  border-radius: var(--mp-radius-pill) !important;
+  padding: 5px 8px !important;
+}
+
+@media (max-width: 640px) {
+  .shell .mp-orders-tabs {
+    border-radius: 24px !important;
+  }
+}
+
+/* Frosted Secondary Pills, Chips, Tiles & Controls */
+html[data-theme] .shell .btn:not(.p):not(.d):not(.mp-home-tip-btn),
+.shell .btn:not(.p):not(.d):not(.mp-home-tip-btn),
+html[data-theme] .home-root .btn:not(.p):not(.d),
+.home-root .btn:not(.p):not(.d),
+.mp-unified-card .btn:not(.p):not(.d),
+html[data-theme] .shell .mp-jump-btn,
+.shell .mp-jump-btn,
+.shell .mp-dash-topbar-btn:not(.is-primary),
+.shell .mp-item-icon-btn:not(.is-scheduled),
+.shell .mp-order-icon-btn:not(.is-wa),
+.shell .mp-order-link-pill,
+.shell .mp-order-status-btn,
+.shell .mp-order-modal-status-btn,
+.shell .mp-od-icon-action:not(.is-danger),
+.shell .mp-od-action-btn:not(.is-wa),
+.shell .mp-od-status-btn,
+.mp-status-picker-close,
+.mp-status-picker-option:not(.is-active),
+.shell .mp-items-count-box:not(.is-limit),
+.shell .mp-items-cats-arrow,
+.shell .mp-items-cat-tab:not(.is-active),
+.shell .mp-compass-btn:not(.is-active),
+.shell .mp-tbl-btn:not(.is-danger),
+.shell .mp-tab-order-btn,
+.shell .mp-action-tile,
+.shell .mp-custom-color-chip,
+.shell .mp-item-price-btn,
+.shell .mp-set2-channel-card:not(.is-selected),
+.shell .mp-set2-type-card:not(.is-selected),
+.shell .mp-set2-hours-apply-btn,
+.shell .mp-set2-add-zone-btn,
+.shell .mp-set2-zone-del-btn,
+.shell .mp-set2-subzone-add-btn,
+.shell .mp-set2-link-action-btn,
+.shell .mp-sb-branch-trigger,
+.shell .mp-stats-nav-arrow,
+.shell .mp-stats-quick-chip:not(.active),
+.shell .mp-stats-select,
+.shell .mp-addon-btn-edit,
+.shell .mp-addon-utility-btn,
+.shell .mp-addon-enable-switch,
+.shell .mp-addon-check-row,
+.shell .mp-addon-info-note,
+.mp-addon-modal-close,
+.shell .mp-he-icon-btn:not(.is-danger),
+.shell .mp-he-disc-preview,
+.shell .mp-he-row-num,
+.shell .mp-pf-inc-btn.is-off,
+.shell .mp-acc-filter-btn:not(.is-active),
+.shell .mp-acc-do-btn,
+.shell .mp-acc-eye-btn,
+.shell .mp-acc-login-btn,
+.mp-act-head-btn,
+.mp-act-head-close,
+.mp-act-tile-btn,
+.mp-act-preset-btn:not(.is-active),
+.mp-act-protected-note,
+.home-root .mp-explore-mobile-tab:not(.is-active),
+.home-root .lang-selector-btn,
+.mp-wa-cta-link,
+html[data-theme] .shell .topbar-icon-btn,
+html[data-theme] .shell .topbar-badge-pill,
+html[data-theme] .shell .topbar-profile-btn,
+html[data-theme] .shell .hamburger-btn,
+html[data-theme] .home-root .hamburger-btn {
+  position: relative;
+  background: var(--mp-glass-control) !important;
+  backdrop-filter: var(--mp-glass-control-blur) !important;
+  -webkit-backdrop-filter: var(--mp-glass-control-blur) !important;
+  border: 1px solid var(--mp-glass-border) !important;
+  box-shadow: var(--mp-glass-control-shadow) !important;
+  color: var(--ink) !important;
+  transition:
+    background 0.18s ease,
+    box-shadow 0.18s ease,
+    transform 0.14s ease;
+}
+
+.shell .btn:not(.p):not(.d):not(.mp-home-tip-btn)::before,
+.home-root .btn:not(.p):not(.d)::before,
+.mp-unified-card .btn:not(.p):not(.d)::before,
+.shell .mp-dash-topbar-btn::before,
+.shell .mp-jump-btn::before,
+.shell .mp-item-icon-btn:not(.is-scheduled)::before,
+.shell .mp-order-icon-btn:not(.is-wa)::before,
+.shell .mp-order-link-pill::before,
+.shell .mp-order-modal-status-btn::before,
+.shell .mp-items-count-box:not(.is-limit)::before,
+.shell .mp-items-cats-arrow::before,
+.shell .mp-items-cat-tab:not(.is-active)::before,
+.shell .mp-compass-btn:not(.is-active)::before,
+.shell .mp-tbl-btn:not(.is-danger)::before,
+.shell .mp-tab-order-btn::before,
+.shell .mp-action-tile::before,
+.shell .mp-custom-color-chip::before,
+.shell .mp-item-price-btn::before,
+.shell .mp-set2-channel-card:not(.is-selected)::before,
+.shell .mp-set2-type-card:not(.is-selected)::before,
+.shell .mp-acc-filter-btn:not(.is-active)::before,
+.mp-act-tile-btn::before,
+.shell .topbar-icon-btn::before,
+.shell .topbar-badge-pill::before,
+.shell .topbar-profile-btn::before,
+.shell .hamburger-btn::before,
+.home-root .hamburger-btn::before,
+.home-root .lang-selector-btn::before,
+.shell .btn.p:not(.d)::before,
+.home-root .btn.p:not(.d)::before,
+.mp-unified-card .btn.p:not(.d)::before,
+.shell .mp-set2-tab-pill::before,
+.shell .mp-stats-seg-btn.active::before,
+.shell .mp-floating-save-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: inherit;
+  background: var(--mp-glass-rim-control);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 2;
+}
+
+html[data-theme] .shell .btn:not(.p):not(.d):not(.mp-home-tip-btn):hover:not(:disabled),
+.shell .btn:not(.p):not(.d):not(.mp-home-tip-btn):hover:not(:disabled),
+html[data-theme] .home-root .btn:not(.p):not(.d):hover:not(:disabled),
+.home-root .btn:not(.p):not(.d):hover:not(:disabled),
+.mp-unified-card .btn:not(.p):not(.d):hover:not(:disabled),
+html[data-theme] .shell .mp-jump-btn:hover,
+.shell .mp-jump-btn:hover,
+.shell .mp-dash-topbar-btn:not(.is-primary):hover,
+.shell .mp-item-icon-btn:not(.is-scheduled):hover,
+.shell .mp-order-icon-btn:not(.is-wa):hover,
+.shell .mp-order-link-pill:hover,
+.shell .mp-items-cats-arrow:hover,
+.shell .mp-compass-btn:not(.is-active):hover,
+.shell .mp-tbl-btn:not(.is-danger):hover:not(:disabled),
+.shell .mp-tab-order-btn:hover,
+.shell .mp-action-tile:hover,
+.shell .mp-item-price-btn:hover,
+.shell .mp-set2-channel-card:not(.is-selected):hover,
+.shell .mp-set2-type-card:not(.is-selected):hover,
+.shell .mp-set2-seg-2-btn:not(.active):hover,
+.shell .mp-he-tab:not(.is-active):hover,
+.shell .mp-he-plan-tab:not(.is-active):hover,
+.shell .mp-he-icon-btn:not(.is-danger):hover:not(:disabled),
+.shell .mp-acc-filter-btn:not(.is-active):hover,
+.shell .mp-acc-do-btn:hover,
+.shell .mp-acc-eye-btn:hover,
+.shell .mp-acc-login-btn:hover,
+.mp-act-tile-btn:hover,
+.mp-act-head-btn:hover,
+.mp-act-head-close:hover,
+.shell .mp-stats-nav-arrow:hover:not(:disabled),
+.shell .mp-stats-quick-chip:not(.active):hover,
+.home-root .lang-selector-btn:hover,
+html[data-theme] .shell .topbar-icon-btn:hover,
+html[data-theme] .shell .topbar-badge-pill:hover,
+html[data-theme] .shell .topbar-profile-btn:hover,
+html[data-theme] .shell .hamburger-btn:hover,
+html[data-theme] .home-root .hamburger-btn:hover {
+  background: var(--mp-glass-control-hover) !important;
+}
+
+/* Concentric Full-Pill Shapes Across Buttons, Tabs, Badges & Icon Circles */
+.shell .btn:not(.mp-home-tip-btn),
+.home-root .btn,
+.mp-unified-card .btn,
+.shell .mp-jump-btn,
+.shell .mp-dash-topbar-btn,
+.shell .mp-order-link-pill,
+.shell .mp-order-status-btn,
+.shell .mp-order-modal-status-btn,
+.shell .mp-od-action-btn,
+.shell .mp-od-status-btn,
+.shell .mp-od-icon-action,
+.shell .mp-item-icon-btn,
+.shell .mp-order-icon-btn,
+.shell .mp-items-cat-tab,
+.shell .mp-items-count-box,
+.shell .mp-items-cats-arrow,
+.shell .mp-orders-tab,
+.shell .mp-appearance-mode-btn,
+.shell .mp-stats-seg-btn,
+.shell .mp-stats-mini-tab,
+.shell .mp-stats-quick-chip,
+.shell .mp-stats-nav-arrow,
+.shell .mp-seg-btn,
+.shell .mp-theme-icon-btn,
+.shell .mp-set2-tab-btn,
+.shell .mp-set2-tab-pill,
+.shell .mp-set2-seg-2-btn,
+.shell .mp-set2-hours-apply-btn,
+.shell .mp-set2-add-zone-btn,
+.shell .mp-set2-link-action-btn,
+.shell .mp-he-tab,
+.shell .mp-he-plan-tab,
+.shell .mp-he-icon-btn,
+.shell .mp-acc-filter-btn,
+.shell .mp-acc-login-btn,
+.shell .mp-acc-do-btn,
+.shell .mp-acc-eye-btn,
+.shell .mp-tbl-btn,
+.shell .mp-tab-order-btn,
+.shell .mp-item-price-btn,
+.shell .mp-pwa-install-btn,
+.shell .mp-pwa-dismiss-btn,
+.shell .mp-sb-branch-trigger,
+.shell .mp-floating-save-btn,
+.shell .topbar-icon-btn,
+.shell .topbar-badge-pill,
+.shell .topbar-profile-btn,
+.shell .hamburger-btn,
+.home-root .hamburger-btn,
+.home-root .lang-selector-btn,
+.home-root .mp-explore-mobile-tab,
+.mp-status-picker-close,
+.mp-addon-modal-close,
+.mp-act-head-btn,
+.mp-act-head-close,
+.mp-act-preset-btn,
+.mp-act-primary-cta,
+.mp-act-danger-btn,
+.mp-magic-create-btn,
+.mp-wa-cta-link {
+  border-radius: var(--mp-radius-pill) !important;
+}
+
+.shell .mp-item-icon-btn,
+.shell .mp-order-icon-btn {
+  width: 36px;
+  height: 36px;
+}
+
+/* Customer Dashboard Topbar Pills (Matches Admin Topbar Capsule-in-Capsule) */
+.shell .mp-dash-topbar-actions {
+  gap: 8px !important;
+}
+
+.shell .mp-dash-topbar-btn {
+  height: 38px !important;
+  min-height: 38px !important;
+  padding: 0 15px !important;
+  font-size: 12.5px !important;
+  font-weight: 800 !important;
+}
+
+@media (max-width: 640px) {
+  .shell .mp-dash-topbar-actions {
+    gap: 6px !important;
+  }
+
+  .shell .mp-dash-topbar-btn {
+    width: 38px !important;
+    min-width: 38px !important;
+    padding: 0 !important;
+  }
+}
+
+/* Concentric Inner Tiles Inside Sub-Cards */
+.shell .mp-action-tile,
+.shell .mp-set2-channel-card,
+.shell .mp-set2-type-card,
+.shell .mp-addon-check-row,
+.shell .mp-addon-info-note,
+.mp-act-tile-btn,
+.mp-status-picker-option,
+.shell .mp-estore-quick-btn {
+  border-radius: var(--mp-radius-subcard) !important;
+}
+
+/* Volumetric 3D Gel Pills (Matches "الموقع العام" Reference Button Illumination) */
+html[data-theme] .shell .btn.p:not(.d),
+.shell .btn.p:not(.d),
+html[data-theme] .home-root .btn.p:not(.d),
+.home-root .btn.p:not(.d),
+.mp-unified-card .btn.p:not(.d),
+.shell .mp-dash-topbar-btn.is-primary,
+.shell .mp-set2-tab-pill,
+.shell .mp-set2-seg-2-btn.active,
+.shell .mp-seg-btn.is-active,
+.shell .mp-theme-icon-btn.is-active,
+.shell .mp-orders-tab.active,
+.shell .mp-appearance-mode-btn.active,
+.shell .mp-items-cat-tab.is-active,
+.shell .mp-he-tab.is-active,
+.shell .mp-he-plan-tab.is-active,
+.shell .mp-acc-filter-btn.is-active,
+.shell .mp-stats-seg-btn.active,
+.shell .mp-stats-quick-chip.active,
+.shell .mp-stats-mini-tab.active,
+.shell .mp-floating-save-btn,
+.shell .mp-pwa-install-btn,
+.mp-act-primary-cta,
+.home-root .mp-explore-mobile-tab.is-active,
+.home-root .mp-billing-active-pill {
+  background: var(--mp-gel-bg) !important;
+  backdrop-filter: var(--mp-glass-control-blur) !important;
+  -webkit-backdrop-filter: var(--mp-glass-control-blur) !important;
+  border: 1px solid var(--mp-gel-border) !important;
+  box-shadow: var(--mp-gel-shadow) !important;
+  color: var(--on-brand, #ffffff) !important;
+}
+
+.shell .btn.p:not(.d),
+.home-root .btn.p:not(.d),
+.mp-unified-card .btn.p:not(.d),
+.shell .mp-dash-topbar-btn.is-primary {
+  position: relative;
+}
+
+.mp-magic-create-btn:not(.hero-cta-btn) {
+  box-shadow:
+    inset 0 0 11px rgba(255, 255, 255, 0.28),
+    inset 0 2px 5px rgba(255, 255, 255, 0.45),
+    inset 0 -3px 7px rgba(0, 0, 0, 0.25),
+    0 10px 26px -6px rgba(14, 165, 233, 0.44) !important;
+}
+
+/* Liquid Glass iOS Toggle Switches */
+.shell .ios-switch.on {
+  background: linear-gradient(180deg, #34d399 0%, #059669 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.36);
+  box-shadow:
+    inset 0 0 8px rgba(255, 255, 255, 0.28),
+    inset 0 1.5px 4px rgba(255, 255, 255, 0.48),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.22),
+    0 4px 14px rgba(16, 185, 129, 0.28);
+}
+
+.shell .ios-switch.off {
+  background: var(--mp-glass-control) !important;
+  backdrop-filter: var(--mp-glass-control-blur) !important;
+  -webkit-backdrop-filter: var(--mp-glass-control-blur) !important;
+  border: 1px solid var(--mp-glass-border);
+  box-shadow: var(--mp-glass-control-shadow);
+}
+
+/* Inputs, Selects & Textareas (Dashboards + Home + Auth + Onboard + Portaled Modals) */
+html[data-theme] .shell .inp,
+html[data-theme] .shell input:not([type="checkbox"]):not([type="radio"]):not([type="color"]):not([type="range"]):not([type="file"]):not([type="hidden"]):not([type="submit"]):not([type="button"]):not(.mp-compass-search-input):not(.mp-set2-slug-input),
+html[data-theme] .shell select,
+html[data-theme] .shell textarea,
+.shell .inp,
+.shell input:not([type="checkbox"]):not([type="radio"]):not([type="color"]):not([type="range"]):not([type="file"]):not([type="hidden"]):not([type="submit"]):not([type="button"]):not(.mp-compass-search-input):not(.mp-set2-slug-input),
+.shell select,
+.shell textarea,
+.shell .mp-sb-branch-select,
+.mp-act-modal-box input:not([type="checkbox"]):not([type="radio"]):not([type="color"]),
+.mp-act-modal-box select,
+.mp-addon-modal-card input:not([type="checkbox"]):not([type="radio"]):not([type="color"]),
+.mp-addon-modal-card select,
+.mp-addon-modal-card textarea,
+html[data-theme] .home-root .inp,
+html[data-theme] .home-root input:not([type="checkbox"]):not([type="radio"]):not([type="color"]):not([type="range"]):not([type="file"]):not([type="hidden"]):not([type="submit"]):not([type="button"]),
+html[data-theme] .home-root select,
+html[data-theme] .home-root textarea,
+.home-root .inp,
+.home-root input:not([type="checkbox"]):not([type="radio"]):not([type="color"]):not([type="range"]):not([type="file"]):not([type="hidden"]):not([type="submit"]):not([type="button"]),
+.home-root select,
+.home-root textarea,
+.mp-unified-card .inp,
+.mp-unified-card input:not([type="checkbox"]):not([type="radio"]):not([type="color"]):not([type="range"]):not([type="file"]):not([type="hidden"]):not([type="submit"]):not([type="button"]),
+.mp-unified-card select,
+.mp-unified-card textarea {
+  background: var(--mp-glass-control) !important;
+  backdrop-filter: var(--mp-glass-control-blur) !important;
+  -webkit-backdrop-filter: var(--mp-glass-control-blur) !important;
+  border: 1px solid var(--mp-glass-border) !important;
+  box-shadow: var(--mp-glass-control-shadow) !important;
+  border-radius: var(--mp-radius-control) !important;
+  color: var(--ink) !important;
+  font-size: var(--mp-text-row);
+}
+
+.shell .mp-compass-search-bar {
+  border-radius: var(--mp-radius-pill) !important;
+}
+
+html[data-theme] .shell .inp:focus,
+html[data-theme] .shell input:not([type="checkbox"]):not([type="radio"]):not([type="color"]):not([type="range"]):not([type="file"]):not([type="hidden"]):not([type="submit"]):not([type="button"]):not(.mp-compass-search-input):not(.mp-set2-slug-input):focus,
+html[data-theme] .shell select:focus,
+html[data-theme] .shell textarea:focus,
+.shell .inp:focus,
+.shell input:not([type="checkbox"]):not([type="radio"]):not([type="color"]):not([type="range"]):not([type="file"]):not([type="hidden"]):not([type="submit"]):not([type="button"]):not(.mp-compass-search-input):not(.mp-set2-slug-input):focus,
+.shell select:focus,
+.shell textarea:focus,
+.mp-act-modal-box input:not([type="checkbox"]):not([type="radio"]):not([type="color"]):focus,
+.mp-act-modal-box select:focus,
+.mp-addon-modal-card input:not([type="checkbox"]):not([type="radio"]):not([type="color"]):focus,
+.mp-addon-modal-card select:focus,
+.mp-addon-modal-card textarea:focus,
+html[data-theme] .home-root .inp:focus,
+html[data-theme] .home-root input:not([type="checkbox"]):not([type="radio"]):not([type="color"]):not([type="range"]):not([type="file"]):not([type="hidden"]):not([type="submit"]):not([type="button"]):focus,
+html[data-theme] .home-root select:focus,
+html[data-theme] .home-root textarea:focus,
+.home-root .inp:focus,
+.home-root input:not([type="checkbox"]):not([type="radio"]):not([type="color"]):not([type="range"]):not([type="file"]):not([type="hidden"]):not([type="submit"]):not([type="button"]):focus,
+.home-root select:focus,
+.home-root textarea:focus,
+.mp-unified-card .inp:focus,
+.mp-unified-card input:not([type="checkbox"]):not([type="radio"]):not([type="color"]):not([type="range"]):not([type="file"]):not([type="hidden"]):not([type="submit"]):not([type="button"]):focus,
+.mp-unified-card select:focus,
+.mp-unified-card textarea:focus {
+  border-color: color-mix(in srgb, var(--brand) 65%, rgba(255, 255, 255, 0.30)) !important;
+  box-shadow:
+    var(--mp-glass-control-shadow),
+    0 0 0 3px color-mix(in srgb, var(--brand) 20%, transparent) !important;
+}
+
+.shell .mp-item-thumb,
+.shell .mp-item-thumb-placeholder {
+  border-radius: 14px !important;
+  border: 1px solid var(--mp-glass-border) !important;
+  box-shadow: var(--mp-glass-control-shadow);
+}
+
+@media (max-width: 767px) {
+  .shell .mp-item-actions {
+    border-top-color: var(--mp-glass-divider) !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   3. Floating Capsule Topbars & Navbars, Sidebar Pills & Elevated Modals
+   -------------------------------------------------------------------------- */
+html[data-theme] .shell .app-topbar,
+.shell .app-topbar {
+  position: sticky !important;
+  top: max(10px, env(safe-area-inset-top, 10px)) !important;
+  min-height: 52px !important;
+  padding: 6px 8px 6px 14px !important;
+  border-radius: var(--mp-radius-pill) !important;
+  background: var(--mp-glass-rail-bg) !important;
+  backdrop-filter: var(--mp-glass-sticky-blur) !important;
+  -webkit-backdrop-filter: var(--mp-glass-sticky-blur) !important;
+  border: 1px solid var(--mp-glass-border) !important;
+  box-shadow: var(--mp-glass-shadow) !important;
+}
+
+@media (max-width: 640px) {
+  html[data-theme] .shell .app-topbar,
+  .shell .app-topbar {
+    padding: 6px 7px !important;
+  }
+}
+
+/* Home Floating Capsule Header Navbar */
+.home-root .nav {
+  position: sticky !important;
+  top: max(10px, env(safe-area-inset-top, 10px)) !important;
+  z-index: 50 !important;
+  width: min(1180px, calc(100% - 24px)) !important;
+  margin: 10px auto 0 !important;
+  border-radius: var(--mp-radius-pill) !important;
+  background: var(--mp-glass-rail-bg) !important;
+  backdrop-filter: var(--mp-glass-sticky-blur) !important;
+  -webkit-backdrop-filter: var(--mp-glass-sticky-blur) !important;
+  border: 1px solid var(--mp-glass-border) !important;
+  box-shadow: var(--mp-glass-shadow) !important;
+}
+
+.home-root .nav .w {
+  height: 56px !important;
+  padding: 0 8px 0 12px !important;
+}
+
+.home-root .nav .links {
+  gap: 8px !important;
+}
+
+.home-root .nav .links a {
+  padding: 7px 14px;
+  border-radius: var(--mp-radius-pill);
+  font-weight: 700;
+  transition: background-color 0.18s ease, color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.home-root .nav .links a:hover {
+  background: var(--mp-glass-control);
+  box-shadow: var(--mp-glass-control-shadow);
+}
+
+@media (max-width: 640px) {
+  .home-root .nav {
+    width: calc(100% - 16px) !important;
+    margin-top: 8px !important;
+  }
+
+  .home-root .nav .w {
+    height: 52px !important;
+    padding: 0 7px !important;
+  }
+}
+
+/* Sidebar & Drawers */
+html[data-theme] .admin-shell .sb.desktop-only,
+html[data-theme] .customer-shell .sb.desktop-only,
+html[data-theme] .shell .sb.desktop-only,
+html[data-theme] .shell .sb,
+.shell .sb,
+html[data-theme] .drawer-panel,
+.drawer-panel {
+  background: var(--mp-glass-bg-elevated) !important;
+  backdrop-filter: var(--mp-glass-modal-blur) !important;
+  -webkit-backdrop-filter: var(--mp-glass-modal-blur) !important;
+  border-inline-end: 1px solid var(--mp-glass-border) !important;
+  box-shadow: var(--mp-glass-shadow) !important;
+  color: var(--ink) !important;
+}
+
+.drawer-panel {
+  border-start-end-radius: 28px;
+  border-end-end-radius: 28px;
+}
+
+/* Sidebar & Drawer Pill Navigation Buttons */
+.shell .sb nav button:not(.sb-footer-item),
+.shell .drawer-panel nav button:not(.btn):not(.sb-footer-item),
+.drawer-panel .profile-popover-item {
+  border-radius: var(--mp-radius-pill) !important;
+  padding: 10px 14px !important;
+}
+
+.shell .sb nav button.on,
+.shell .drawer-panel nav button:not(.btn).on {
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--brand) 24%, rgba(255, 255, 255, 0.08)) 0%,
+    color-mix(in srgb, var(--brand) 14%, transparent) 100%
+  ) !important;
+  border: 1px solid color-mix(in srgb, var(--brand) 42%, var(--mp-glass-border)) !important;
+  box-shadow:
+    inset 0 1px 4px rgba(255, 255, 255, 0.24),
+    inset 0 -2px 5px rgba(0, 0, 0, 0.14),
+    0 4px 12px color-mix(in srgb, var(--brand) 16%, transparent) !important;
+}
+
+.shell .sb .lg,
+.drawer-panel .lg {
+  border-bottom-color: var(--mp-glass-divider) !important;
+}
+
+.shell .sb-nav-divider {
+  background: var(--mp-glass-divider) !important;
+}
+
+/* Portaled Liquid Glass Modals & Popovers */
+.ajax-box,
+.mp-od-sheet,
+.mp-select-modal-box,
+.mp-status-picker-card,
+.mp-act-modal-box,
+.mp-addon-modal-card,
+.mp-glass-modal {
+  position: relative;
+}
+
+html[data-theme] .ajax-box,
+.ajax-box,
+.mp-od-sheet,
+.mp-select-modal-box,
+.mp-status-picker-card,
+html[data-theme] .mp-act-modal-box,
+.mp-act-modal-box,
+html[data-theme] .mp-addon-modal-card,
+.mp-addon-modal-card,
+html[data-theme] .mp-glass-modal,
+.mp-glass-modal {
+  background: var(--mp-glass-bg-elevated) !important;
+  backdrop-filter: var(--mp-glass-modal-blur) !important;
+  -webkit-backdrop-filter: var(--mp-glass-modal-blur) !important;
+  border: 1px solid var(--mp-glass-border) !important;
+  border-radius: var(--mp-radius-modal) !important;
+  box-shadow: var(--mp-glass-shadow) !important;
+  color: var(--ink) !important;
+}
+
+html[data-theme] .profile-popover,
+.profile-popover {
+  background: var(--mp-glass-bg-elevated) !important;
+  backdrop-filter: var(--mp-glass-modal-blur) !important;
+  -webkit-backdrop-filter: var(--mp-glass-modal-blur) !important;
+  border: 1px solid var(--mp-glass-border) !important;
+  border-radius: 24px !important;
+  box-shadow: var(--mp-glass-shadow) !important;
+  color: var(--ink) !important;
+  padding: 6px !important;
+}
+
+.profile-popover-item {
+  border-radius: 16px !important;
+}
+
+.mp-act-modal-head,
+.mp-addon-modal-header,
+.mp-od-head {
+  background: transparent !important;
+  border-bottom: 1px solid var(--mp-glass-divider) !important;
+}
+
+.mp-addon-modal-footer,
+.mp-act-footer {
+  background: transparent !important;
+  border-top: 1px solid var(--mp-glass-divider) !important;
+}
+
+/* Liquid Glass Floating Toast Pill */
+.toast {
+  background: rgba(12, 19, 27, 0.78) !important;
+  backdrop-filter: var(--mp-glass-sticky-blur) !important;
+  -webkit-backdrop-filter: var(--mp-glass-sticky-blur) !important;
+  border: 1px solid rgba(255, 255, 255, 0.24) !important;
+  border-radius: var(--mp-radius-pill) !important;
+  box-shadow:
+    inset 0 1px 4px rgba(255, 255, 255, 0.24),
+    0 12px 32px rgba(0, 0, 0, 0.36) !important;
+}
+
+/* --------------------------------------------------------------------------
+   4. Clear, Readable & Concise Typography Across All Dashboards
+   -------------------------------------------------------------------------- */
+.shell .mp-item-title {
+  font-size: var(--mp-text-row);
+  font-weight: 800;
+  color: var(--ink);
+}
+
+.shell .mp-item-price-btn {
+  font-size: var(--mp-text-meta);
+  font-weight: 800;
+}
+
+.shell .mp-set2-panel-title,
+.shell .mp-stats-panel-title {
+  font-size: var(--mp-text-title);
+  font-weight: 900;
+}
+
+.shell .mp-set2-row-title,
+.shell .mp-home-shortcut-label {
+  font-size: var(--mp-text-row);
+  font-weight: 800;
+}
+
+.shell .mp-home-welcome-title {
+  font-size: var(--mp-text-hero);
+  font-weight: 900;
+}
+
+/* --------------------------------------------------------------------------
+   5. Touch UX Polish (Preserve Full Blurry Liquid Glass on All Viewports)
+   -------------------------------------------------------------------------- */
+@media (hover: none), (pointer: coarse) {
+  .shell .mp-item-card:hover,
+  .shell .mp-order-row:hover,
+  .shell .mp-home-shortcut-card:not(.is-active-warn):hover,
+  .shell .mp-addon-square-card:not(.is-enabled):hover,
+  .shell .kp:hover,
+  .shell .mp-acc-kpi-card:hover,
+  .home-root .feature-compact-card:hover,
+  .home-root .mp-faq-card:hover {
+    transform: none !important;
+  }
+}
